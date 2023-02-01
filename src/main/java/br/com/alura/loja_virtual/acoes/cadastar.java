@@ -29,9 +29,9 @@ public class cadastar {
                 System.out.println("\nInsira os dados do produto:");
                 System.out.println("---------------------------\n");
                 System.out.print("Nome: ");
-                String nome = teclado.nextLine();
+                String nome = teclado.next();
                 System.out.print("Descrição: ");
-                String descricao = teclado.nextLine();
+                String descricao = teclado.next();
                 System.out.print("Preço: ");
                 String preco = teclado.next();
                 System.out.print("Categoria: ");
@@ -42,9 +42,11 @@ public class cadastar {
 
                 EntityManager em = JPAUtil.getEntityManager();
                 ProdutoDao produtoDao = new ProdutoDao(em);
+                CategoriaDao categoriaDao = new CategoriaDao(em);
 
                 em.getTransaction().begin();
 
+                categoriaDao.cadastro(categoria);
                 produtoDao.cadastro(produto);
 
                 em.getTransaction().commit();

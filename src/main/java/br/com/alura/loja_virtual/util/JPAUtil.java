@@ -6,9 +6,11 @@ import javax.persistence.Persistence;
 
 public class JPAUtil {
 
-    private static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("loja_virtual");
+    private static final EntityManagerFactory FACTORY = Persistence
+            .createEntityManagerFactory("loja_virtual");
 
     public static EntityManager getEntityManager(){
+
         return FACTORY.createEntityManager();
     }
 }
