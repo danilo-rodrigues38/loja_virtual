@@ -12,7 +12,7 @@ public class main {
         while (true) {
             inicial.inicial();
             System.out.print("\nDigite a opção desejada: ");
-            Integer opcao = teclado.nextInt();
+            int opcao = teclado.nextInt();
             if (opcao > 5){
                 System.out.println("\nOpção inválida!!!");
                 System.out.println("Digite somente valores entre 1 e 5.\n");

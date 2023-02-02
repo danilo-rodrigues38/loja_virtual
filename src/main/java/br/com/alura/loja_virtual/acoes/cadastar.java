@@ -9,6 +9,7 @@ import br.com.alura.loja_virtual.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class cadastar {
@@ -21,7 +22,7 @@ public class cadastar {
             System.out.println("3 - Voltar");
             Scanner teclado = new Scanner(System.in);
             System.out.print("\nDigite a opção desejada: ");
-            Integer opcao = teclado.nextInt();
+            int opcao = teclado.nextInt();
             if (opcao > 3) {
                 System.out.println("\nOpção inválida!!!");
                 System.out.println("Digite somente valores entre 1 e 3.\n");
@@ -29,18 +30,18 @@ public class cadastar {
                 System.out.println("\nInsira os dados do produto:");
                 System.out.println("---------------------------\n");
                 System.out.print("Nome: ");
-                String nome = teclado.next();
+                String nome = teclado.next().toUpperCase(Locale.ROOT);
                 System.out.print("Descrição: ");
-                String descricao = teclado.next();
+                String descricao = teclado.next().toUpperCase();
                 System.out.print("Preço: ");
                 String preco = teclado.next();
                 System.out.print("Categoria: ");
-                String ctgr = teclado.next();
+                String ctgr = teclado.next().toUpperCase();
 
+                EntityManager em = JPAUtil.getEntityManager();
                 Categoria categoria = new Categoria(ctgr);
                 Produto produto = new Produto(nome, descricao, new BigDecimal(preco), categoria);
 
-                EntityManager em = JPAUtil.getEntityManager();
                 ProdutoDao produtoDao = new ProdutoDao(em);
                 CategoriaDao categoriaDao = new CategoriaDao(em);
 
@@ -55,7 +56,7 @@ public class cadastar {
                 System.out.println("\nInsira a nova categoria");
                 System.out.println("-----------------------\n");
                 System.out.print("Categoria: ");
-                String ctgr = teclado.next();
+                String ctgr = teclado.next().toUpperCase();
 
                 Categoria categoria = new Categoria(ctgr);
 

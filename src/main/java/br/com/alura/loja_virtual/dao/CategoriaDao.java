@@ -3,6 +3,7 @@ package br.com.alura.loja_virtual.dao;
 import br.com.alura.loja_virtual.modulos.Categoria;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 public class CategoriaDao {
 
@@ -14,7 +15,6 @@ public class CategoriaDao {
     }
 
     public void cadastro(Categoria categoria){
-
         this.em.persist(categoria);
     }
 
@@ -33,5 +33,9 @@ public class CategoriaDao {
 
     public Categoria buscarNomeCategoria(String nome){
         return em.find(Categoria.class, nome);
+    }
+    public List<Categoria> buscarTodas(){
+        String jpql = "SELECT p FROM categoria p";
+        return em.createQuery(jpql, Categoria.class).getResultList();
     }
 }
