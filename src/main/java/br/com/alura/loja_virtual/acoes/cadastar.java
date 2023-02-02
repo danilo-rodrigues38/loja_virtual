@@ -9,6 +9,7 @@ import br.com.alura.loja_virtual.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -35,19 +36,24 @@ public class cadastar {
                 String descricao = teclado.next().toUpperCase();
                 System.out.print("Preço: ");
                 String preco = teclado.next();
-                System.out.print("Categoria: ");
-                String ctgr = teclado.next().toUpperCase();
 
                 EntityManager em = JPAUtil.getEntityManager();
-                Categoria categoria = new Categoria(ctgr);
-                Produto produto = new Produto(nome, descricao, new BigDecimal(preco), categoria);
+                CategoriaDao categoriaDao = new CategoriaDao(em);
+                List<Categoria> todos = categoriaDao.buscarTodos();
+                todos.forEach(c -> System.out.println(c.getId() + " - " + c.getNome()));
+
+                System.out.print("Categoria: ");
+                Long ctgr = teclado.nextLong();
+
+                //Categoria cat = new Categoria(ctgr);
+                //Produto produto = new Produto(nome, descricao, new BigDecimal(preco), categoria);
 
                 ProdutoDao produtoDao = new ProdutoDao(em);
-                CategoriaDao categoriaDao = new CategoriaDao(em);
 
                 em.getTransaction().begin();
 
-                categoriaDao.cadastro(categoria);
+                Categoria categoria = categoriaDao.buscarCategoriaId(ctgr);
+                Produto produto = new Produto(nome, descricao, new BigDecimal(preco), categoria);
                 produtoDao.cadastro(produto);
 
                 em.getTransaction().commit();

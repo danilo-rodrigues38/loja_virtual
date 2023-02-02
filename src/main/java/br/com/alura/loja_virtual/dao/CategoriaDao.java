@@ -23,7 +23,6 @@ public class CategoriaDao {
     }
 
     public void remover(Categoria categoria) {
-        categoria = em.merge(categoria);
         this.em.remove(categoria);
     }
 
@@ -32,10 +31,11 @@ public class CategoriaDao {
     }
 
     public Categoria buscarNomeCategoria(String nome){
+
         return em.find(Categoria.class, nome);
     }
-    public List<Categoria> buscarTodas(){
-        String jpql = "SELECT p FROM categoria p";
-        return em.createQuery(jpql, Categoria.class).getResultList();
+
+    public List<Categoria> buscarTodos(){
+        return em.createQuery("SELECT c FROM Categoria c", Categoria.class).getResultList();
     }
 }
