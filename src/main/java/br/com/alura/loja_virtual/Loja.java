@@ -1,4 +1,4 @@
-package br.com.alura.loja_virtual.testes;
+package br.com.alura.loja_virtual;
 
 import java.util.Scanner;
 import br.com.alura.loja_virtual.acoes.*;
