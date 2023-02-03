@@ -36,7 +36,7 @@ public class Cadastar {
         System.out.println("\nO que quer cadastrar?");
         System.out.println("----------------------\n");
         System.out.println("1 - Produtos");
-        System.out.println("2 - Categoria");
+        System.out.println("2 - Categorias");
         System.out.println("3 - Voltar");
     }
 
