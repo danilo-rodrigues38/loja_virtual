@@ -1,9 +1,9 @@
 package br.com.alura.loja_virtual.acoes;
 
-public class inicial {
+public class Inicial {
 
     public static void inicial(){
-        System.out.println("\nTela inicial para acesso ao Banco de Dados");
+        System.out.println("\nTela Inicial para acesso ao Banco de Dados");
         System.out.println("------------------------------------------\n");
         System.out.println("1 - Cadastrar");
         System.out.println("2 - Alterar");

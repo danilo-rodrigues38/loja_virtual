@@ -10,20 +10,20 @@ public class main {
         Scanner teclado = new Scanner(System.in);
 
         while (true) {
-            inicial.inicial();
+            Inicial.inicial();
             System.out.print("\nDigite a opção desejada: ");
             int opcao = teclado.nextInt();
             if (opcao > 5){
                 System.out.println("\nOpção inválida!!!");
                 System.out.println("Digite somente valores entre 1 e 5.\n");
             } else if (opcao == 1){
-                cadastar.cadastrar();
+                Cadastar.cadastrar();
             } else if (opcao == 2) {
-                alterar.alterar();
+                Alterar.alterar();
             } else if (opcao == 3) {
-                consultar.consultar();
+                Consultar.consultar();
             } else if (opcao == 4) {
-                excluir.excluir();
+                Excluir.excluir();
             } else if (opcao == 5) {
                 System.out.println("\nEncerrando a conexão...\n");
                 System.out.println("Obrigado por usar nosso sistema.");

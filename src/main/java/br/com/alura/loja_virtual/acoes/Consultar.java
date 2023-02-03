@@ -1,6 +1,6 @@
 package br.com.alura.loja_virtual.acoes;
 
-public class consultar {
+public class Consultar {
     public static void consultar(){
 
     }

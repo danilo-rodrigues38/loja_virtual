@@ -1,6 +1,6 @@
 package br.com.alura.loja_virtual.acoes;
 
-public class excluir {
+public class Excluir {
     public static void excluir(){
 
     }

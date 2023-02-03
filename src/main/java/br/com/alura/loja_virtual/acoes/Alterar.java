@@ -1,6 +1,6 @@
 package br.com.alura.loja_virtual.acoes;
 
-public class alterar {
+public class Alterar {
     public static void alterar(){
 
     }

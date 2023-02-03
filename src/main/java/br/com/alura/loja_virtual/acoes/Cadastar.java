@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class cadastar {
+public class Cadastar {
     public static void cadastrar() {
         while (true) {
             System.out.println("\nO que quer cadastrar?");
