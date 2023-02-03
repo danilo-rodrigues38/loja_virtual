@@ -30,6 +30,13 @@ public class cadastar {
             } else if (opcao == 1) {
                 System.out.println("\nInsira os dados do produto:");
                 System.out.println("---------------------------\n");
+                EntityManager em = JPAUtil.getEntityManager();
+                CategoriaDao categoriaDao = new CategoriaDao(em);
+                List<Categoria> todos = categoriaDao.buscarTodos();
+                System.out.println("\n   Escolha a categoria");
+                System.out.println("------------------------");
+                System.out.println("ID\t\t\tNOME");
+                todos.forEach(c -> System.out.println(c.getId() + "\t - \t" + c.getNome()));
                 System.out.print("Nome: ");
                 String nome = teclado.next().toUpperCase(Locale.ROOT);
                 System.out.print("Descrição: ");
@@ -37,16 +44,8 @@ public class cadastar {
                 System.out.print("Preço: ");
                 String preco = teclado.next();
 
-                EntityManager em = JPAUtil.getEntityManager();
-                CategoriaDao categoriaDao = new CategoriaDao(em);
-                List<Categoria> todos = categoriaDao.buscarTodos();
-                todos.forEach(c -> System.out.println(c.getId() + " - " + c.getNome()));
-
                 System.out.print("Categoria: ");
                 Long ctgr = teclado.nextLong();
-
-                //Categoria cat = new Categoria(ctgr);
-                //Produto produto = new Produto(nome, descricao, new BigDecimal(preco), categoria);
 
                 ProdutoDao produtoDao = new ProdutoDao(em);
 
