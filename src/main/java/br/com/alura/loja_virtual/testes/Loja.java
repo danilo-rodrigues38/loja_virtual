@@ -3,7 +3,7 @@ package br.com.alura.loja_virtual.testes;
 import java.util.Scanner;
 import br.com.alura.loja_virtual.acoes.*;
 
-public class main {
+public class Loja {
 
     public static void main(String[] args) {
 
