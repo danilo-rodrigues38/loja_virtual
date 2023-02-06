@@ -52,7 +52,7 @@ public class Cadastar {
         System.out.println("ID\t\t\tNOME");
         todos.forEach(c -> System.out.println(c.getId() + "\t - \t" + c.getNome()));
         System.out.print("Nome: ");
-        String nome = teclado.next().toUpperCase(Locale.ROOT);
+        String nome = teclado.next().toUpperCase();
         System.out.print("Descrição: ");
         String descricao = teclado.next().toUpperCase();
         System.out.print("Preço: ");
