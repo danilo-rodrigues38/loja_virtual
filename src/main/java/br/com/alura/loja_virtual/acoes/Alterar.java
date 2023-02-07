@@ -48,24 +48,12 @@ public class Alterar {
         CategoriaDao categoriaDao = new CategoriaDao(em);
 
         while (true) {
-
-            System.out.print("\nDigite o ID do produto: ");
-            Long id = teclado.nextLong();
-            Produto p = produtoDao.buscarPorId(id);
-
-            System.out.println("ID: " + p.getId());
-            System.out.println("Nome: " + p.getNome());
-            System.out.println("Descrição: " + p.getDescricao());
-            System.out.println("Preço: " + p.getPreco());
-            System.out.println("Data cadastro: " + p.getDataCadastro());
-            System.out.println("Categoria: " + p.getCategoria().getNome());
-
+            Long id = listarPorId();
             System.out.println("\nOs dados do ID selecionado serão alterados.");
             System.out.print("Deseja continuar!!! Tecle [Sim/Não]: ");
             String resp = teclado.next().toUpperCase().substring(0, 1);
 
             if (resp.equals("S")) {
-
                 List<Categoria> todos = categoriaDao.buscarTodos();
                 System.out.println("ID\t\t\tNOME");
                 todos.forEach(c -> System.out.println(c.getId() + " - " + c.getNome()));
@@ -140,5 +128,24 @@ public class Alterar {
                 break;
             }
         }
+    }
+
+    public static Long listarPorId(){
+        EntityManager em = JPAUtil.getEntityManager();
+        Scanner teclado = new Scanner(System.in);
+        ProdutoDao produtoDao = new ProdutoDao(em);
+
+        System.out.print("\nDigite o ID do produto: ");
+        Long id = teclado.nextLong();
+        Produto p = produtoDao.buscarPorId(id);
+
+        System.out.println("ID: " + p.getId());
+        System.out.println("Nome: " + p.getNome());
+        System.out.println("Descrição: " + p.getDescricao());
+        System.out.println("Preço: " + p.getPreco());
+        System.out.println("Data cadastro: " + p.getDataCadastro());
+        System.out.println("Categoria: " + p.getCategoria().getNome());
+
+        return id;
     }
 }
