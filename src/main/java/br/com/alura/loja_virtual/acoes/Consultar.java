@@ -1,5 +1,6 @@
 package br.com.alura.loja_virtual.acoes;
 
+import br.com.alura.loja_virtual.dao.CategoriaDao;
 import br.com.alura.loja_virtual.dao.ProdutoDao;
 import br.com.alura.loja_virtual.modulos.Produto;
 import br.com.alura.loja_virtual.util.JPAUtil;
@@ -41,6 +42,7 @@ public class Consultar {
         while (true) {
             EntityManager em = JPAUtil.getEntityManager();
             ProdutoDao produtoDao = new ProdutoDao(em);
+            CategoriaDao categoriaDao = new CategoriaDao(em);
 
             Scanner teclado = new Scanner(System.in);
             System.out.println("\nConsulta produtos por:");
@@ -57,11 +59,34 @@ public class Consultar {
             if (opcao == 1) {
                 Alterar.listarPorId();
             } else if (opcao == 2) {
+                System.out.print("\nDigite o nome do produto: ");
+                String nome = teclado.next().toUpperCase();
 
+                List<Produto> todos = produtoDao.buscarPorNome(nome);
+                System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n","ID", "NOME", "DESCRIÇÃO", "DATA", "VALOR", "CATEGORIA");
+                System.out.println("------------------------------------------------------------------------------------");
+                todos.forEach(produto -> System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n", produto.getId(),
+                        produto.getNome(), produto.getDescricao(), produto.getDataCadastro(), produto.getPreco(),
+                        produto.getCategoria().getNome()));
             } else if (opcao == 3) {
+                System.out.print("\nDigitte a categoria:");
+                String categoria = teclado.next();
 
+                List<Produto> todos = produtoDao.buscaPorNomeCategoria(categoria);
+                System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n","ID", "NOME", "DESCRIÇÃO", "DATA", "VALOR", "CATEGORIA");
+                System.out.println("------------------------------------------------------------------------------------");
+                todos.forEach(produto -> System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n", produto.getId(),
+                        produto.getNome(), produto.getDescricao(), produto.getDataCadastro(), produto.getPreco(),
+                        produto.getCategoria().getNome()));
             } else if (opcao == 4) {
+                System.out.println("Listando todos os produtos cadastrados:\n");
 
+                List<Produto> todos = produtoDao.buscarTodos();
+                System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n","ID", "NOME", "DESCRIÇÃO", "DATA", "VALOR", "CATEGORIA");
+                System.out.println("------------------------------------------------------------------------------------");
+                todos.forEach(produto -> System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n", produto.getId(),
+                        produto.getNome(), produto.getDescricao(), produto.getDataCadastro(), produto.getPreco(),
+                        produto.getCategoria().getNome()));
             } else if (opcao == 5) {
 
             } else if (opcao == 6) {
