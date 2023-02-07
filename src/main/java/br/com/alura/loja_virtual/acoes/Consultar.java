@@ -2,6 +2,7 @@ package br.com.alura.loja_virtual.acoes;
 
 import br.com.alura.loja_virtual.dao.CategoriaDao;
 import br.com.alura.loja_virtual.dao.ProdutoDao;
+import br.com.alura.loja_virtual.modulos.Categoria;
 import br.com.alura.loja_virtual.modulos.Produto;
 import br.com.alura.loja_virtual.util.JPAUtil;
 
@@ -99,6 +100,12 @@ public class Consultar {
     }
 
     public static void consultarCategoria() {
+        EntityManager em = JPAUtil.getEntityManager();
+        CategoriaDao categoriaDao = new CategoriaDao(em);
 
+        List<Categoria> todos = categoriaDao.buscarTodos();
+        System.out.println("Listando as categorias do banco de dados.");
+        System.out.printf("%-4s%-20s\n", "ID", "NOME");
+        todos.forEach(c -> System.out.printf("%-4s%-20s\n", c.getId(), c.getNome()));
     }
 }
