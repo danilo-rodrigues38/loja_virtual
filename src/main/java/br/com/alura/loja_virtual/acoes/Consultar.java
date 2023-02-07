@@ -69,7 +69,7 @@ public class Consultar {
 
                 List<Produto> todos = produtoDao.buscarPorNome(nome);
                 System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n","ID", "NOME", "DESCRIÇÃO", "DATA", "VALOR", "CATEGORIA");
-                System.out.println("------------------------------------------------------------------------------------");
+                System.out.println("-----------------------------------------------------------------------------------------------");
                 todos.forEach(produto -> System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n", produto.getId(),
                         produto.getNome(), produto.getDescricao(), produto.getDataCadastro(), produto.getPreco(),
                         produto.getCategoria().getNome()));
@@ -79,7 +79,7 @@ public class Consultar {
 
                 List<Produto> todos = produtoDao.buscaPorNomeCategoria(categoria);
                 System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n","ID", "NOME", "DESCRIÇÃO", "DATA", "VALOR", "CATEGORIA");
-                System.out.println("------------------------------------------------------------------------------------");
+                System.out.println("-----------------------------------------------------------------------------------------------");
                 todos.forEach(produto -> System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n", produto.getId(),
                         produto.getNome(), produto.getDescricao(), produto.getDataCadastro(), produto.getPreco(),
                         produto.getCategoria().getNome()));
@@ -88,7 +88,7 @@ public class Consultar {
 
                 List<Produto> todos = produtoDao.buscarTodos();
                 System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n","ID", "NOME", "DESCRIÇÃO", "DATA", "VALOR", "CATEGORIA");
-                System.out.println("------------------------------------------------------------------------------------");
+                System.out.println("-----------------------------------------------------------------------------------------------");
                 todos.forEach(produto -> System.out.printf("%-4s%-25s%-25s%-15s%-10s%-20s\n", produto.getId(),
                         produto.getNome(), produto.getDescricao(), produto.getDataCadastro(), produto.getPreco(),
                         produto.getCategoria().getNome()));
@@ -106,8 +106,9 @@ public class Consultar {
         CategoriaDao categoriaDao = new CategoriaDao(em);
 
         List<Categoria> todos = categoriaDao.buscarTodos();
-        System.out.println("Listando as categorias do banco de dados.");
+        System.out.println("Listando as categorias do banco de dados.\n");
         System.out.printf("%-4s%-20s\n", "ID", "NOME");
+        System.out.println("-------------------------");
         todos.forEach(c -> System.out.printf("%-4s%-20s\n", c.getId(), c.getNome()));
     }
 }

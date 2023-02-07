@@ -54,9 +54,7 @@ public class Alterar {
             String resp = teclado.next().toUpperCase().substring(0, 1);
 
             if (resp.equals("S")) {
-                List<Categoria> todos = categoriaDao.buscarTodos();
-                System.out.println("ID\t\t\tNOME");
-                todos.forEach(c -> System.out.println(c.getId() + " - " + c.getNome()));
+                Consultar.consultarCategoria();
 
                 System.out.print("\nNome: ");
                 String nome = teclado.next().toUpperCase();
