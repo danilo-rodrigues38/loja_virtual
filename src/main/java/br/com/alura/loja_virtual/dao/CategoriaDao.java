@@ -10,7 +10,6 @@ public class CategoriaDao {
     private EntityManager em;
 
     public CategoriaDao(EntityManager em) {
-
         this.em = em;
     }
 
@@ -31,7 +30,6 @@ public class CategoriaDao {
     }
 
     public Categoria buscarNomeCategoria(String nome){
-
         return em.find(Categoria.class, nome);
     }
 
