@@ -14,7 +14,7 @@ public class Consultar {
     public static void consultar() {
         while (true) {
             Scanner teclado = new Scanner(System.in);
-            menuConsultar();
+            menuConsultar1();
             System.out.print("\nDigite sua escolha: ");
             int opcao = teclado.nextInt();
 
@@ -31,7 +31,7 @@ public class Consultar {
         }
     }
 
-    public static void menuConsultar() {
+    public static void menuConsultar1() {
         System.out.println("\nO que quer consultar");
         System.out.println("--------------------\n");
         System.out.println("1 - Produtos");
@@ -39,21 +39,25 @@ public class Consultar {
         System.out.println("3 - Sair");
     }
 
+    public static void menuConsultar2() {
+        System.out.println("\nConsulta produtos por:");
+        System.out.println("---------------------\n");
+        System.out.println("1 - ID");
+        System.out.println("2 - Nome");
+        System.out.println("3 - Categoria");
+        System.out.println("4 - Listar todos");
+        System.out.println("5 - sair");
+    }
+
     public static void consultarProduto() {
         while (true) {
             EntityManager em = JPAUtil.getEntityManager();
             ProdutoDao produtoDao = new ProdutoDao(em);
-            CategoriaDao categoriaDao = new CategoriaDao(em);
 
             Scanner teclado = new Scanner(System.in);
-            System.out.println("\nConsulta produtos por:");
-            System.out.println("---------------------\n");
-            System.out.println("1 - ID");
-            System.out.println("2 - Nome");
-            System.out.println("3 - Categoria");
-            System.out.println("4 - Listar todos");
-            System.out.println("5 - Por valor");
-            System.out.println("6 - sair");
+
+            menuConsultar2();
+
             System.out.print("\nDigite sua escolha: ");
             int opcao = teclado.nextInt();
 
@@ -89,8 +93,6 @@ public class Consultar {
                         produto.getNome(), produto.getDescricao(), produto.getDataCadastro(), produto.getPreco(),
                         produto.getCategoria().getNome()));
             } else if (opcao == 5) {
-
-            } else if (opcao == 6) {
                 break;
             } else {
                 System.out.println("\nOpção inválida!!!");
